@@ -1,0 +1,71 @@
+# ~/.tmuxinator/openvz.yml
+
+name: openvz
+root: ~/git
+
+# Optional tmux socket
+# socket_name: foo
+
+# Runs before everything. Use it to start daemons etc.
+# pre: sudo /etc/rc.d/mysqld start
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window: rbenv shell 2.0.0-p247
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+
+# Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.
+tmux_command: byobu
+
+windows:
+  - study:
+     layout: ed56,239x60,0,0[239x19,0,0{127x19,0,0,2,111x19,128,0,6},239x40,0,20,7] 
+     panes:
+       - ssh test-openvz
+       - ssh test-60-zabbix
+       - htop
+  - salt: 
+  #layout: a9ac,239x60,0,0{113x60,0,0,1,125x60,114,0[125x29,114,0,3,125x30,114,30,4]}
+     layout: d29c,239x60,0,0{119x60,0,0[119x30,0,0,2,119x29,0,31,7],119x60,120,0[119x30,120,0,5,119x29,120,31,6]}
+     panes:
+       - mosh test-master
+       - mosh test-master
+       - mosh test-minionA6
+       - mosh test-minionB6
+  - coding:
+     layout: a9ac,239x60,0,0{113x60,0,0,1,125x60,114,0[125x29,114,0,3,125x30,114,30,4]}
+    #layout: even-horizontal 
+     panes:
+       - cd ~/git/work
+       - vim
+#     - tmux set-window-option -t1 automatic-rename off
+  - uat:
+      - ssh monitor
+#  - openvz:
+#      - ssh test-openvz
+  - aliyun:
+      - ssh ali-tokyo-a-saltmaster
+  - ubuntu:
+      layout: even-vertical
+      panes:
+        - cd ~/vagrant/ubuntu16.04 && vagrant up && vagrant ssh
+        - htop
+
+#  - asmail: asmail
+#  - cmmail: cmmail
+#  - mailsvr: mailsvr 
+#  - vagrant:
+#     layout: d29c,239x60,0,0{119x60,0,0[119x30,0,0,2,119x29,0,31,7],119x60,120,0[119x30,120,0,5,119x29,120,31,6]}
+#     panes:
+#       - cd ~/vagrant && vagrant up funtoo && vagrant ssh funtoo
+#       - cd ~/vagrant && vagrant ssh funtoo
+#       - cd ~/vagrant && vagrant up gentoo && vagrant ssh gentoo 
+#       - cd ~/vagrant && vagrant ssh gentoo
+  
+#  - editor: 
+#    layout: main-vertical
+#    panes:
+ 
+#       - centos
+#   - htop

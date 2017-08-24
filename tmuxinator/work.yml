@@ -1,7 +1,7 @@
 # ~/.tmuxinator/rails.yml
 
-name: rails
-root: ~/code
+name: work
+root: ~/git
 
 # Optional tmux socket
 # socket_name: foo
@@ -19,12 +19,13 @@ root: ~/code
 tmux_command: byobu
 
 windows:
-  - editor:
+ # - editor:
+  - work:
       layout: even-vertical
       panes:
-        - vim
+        - 
         - htop 85%
-  - server: bundle exec rails s
-  - logs: tail -f log/development.log
-  - console: rails c
-  - server: funtoo
+  - test-docker: ssh test-docker 
+  - test-nginx: ssh test-nginx
+  - test-zabbix: ssh test-zabbix
+  - test-openvz: ssh test-openvz
