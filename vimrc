@@ -1,5 +1,8 @@
 ""by daniel's vimrc
 
+"去掉讨厌的有关vi一致性模式，避免以前版本的一些bug和局限
+set nocompatible
+
 if has("syntax")
   syntax on
 endif
@@ -11,7 +14,7 @@ let g:sls_use_jinja_syntax = 0
 if has("gui_running")
   colorscheme yytextmate
 else
-  colorscheme gruvbox
+  colorscheme gruvbox8
   "colorscheme slate
 endif
 
@@ -22,8 +25,6 @@ set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 "set guifont=Monaco:h12:cANSI
 set guifont=Menlo\ for\ Powerline
 
-"去掉讨厌的有关vi一致性模式，避免以前版本的一些bug和局限
-set nocompatible
 
 "显示行号
 set number
@@ -153,7 +154,8 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'honza/vim-snippets'
 Plugin 'alpertuna/vim-header'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'morhetz/gruvbox'
+Plugin 'lifepillar/vim-gruvbox8'
+"Plugin 'morhetz/gruvbox'
 Plugin 'c9s/colorselector.vim'
 
 " All of your Plugins must be added before the following line
